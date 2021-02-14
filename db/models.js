@@ -15,14 +15,37 @@ conn.on('connected', function(){
 
 // 2、得到对应特定集合的model
 // 字义Schema
+// 定义user集合的文档结构
 const userSchema = mongoose.Schema({
     username: {type: String, required: true},
     password: {type: String, required: true},
     type: {type: String, required: true},
     header: {type: String},
+    post: {type: String},
+    info: {type: String},
+    company: {type: String},
+    salary: {type: String}
 })
 
 // 定义model
+// 定义能操作user集合的model
 const UserModel = mongoose.model('user', userSchema)
 
 exports.UserModel = UserModel;
+
+
+// 定义chat集合的文档结构
+const chatSchema = mongoose.Schema({
+    from: {type: String, required: true},
+    to: {type: String, required: true},
+    chat_id: {type: String, required: true},
+    content: {type: String, required: true},
+    read: {type: Boolean, default: false},
+    create_time: {type: Number}
+})
+
+// 定义model
+// 定义能操作chat集合的model
+const ChatModel = mongoose.model('chat', chatSchema)
+
+exports.ChatModel = ChatModel;
